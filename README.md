@@ -2,6 +2,8 @@
 
 ![fcm-send help output](docs/media/fcm-send-help.png)
 
+[![Downloads](https://img.shields.io/github/downloads/mrblrrd/fcm-send/total.svg)](https://github.com/mrblrrd/fcm-send/releases)
+
 # Basic steps
 
 1. Download [a private key file for your service account](https://firebase.google.com/docs/cloud-messaging/auth-server#provide_credentials_manually) from the Firebase console.
@@ -29,12 +31,16 @@
     ```bash
     ./fcm-send -m message.json
     ```
-    ```bash
+    ```text
     Message sent to Firebase for delivery. Response:
     {
       "name": "projects/<project_id>/messages/0:1572347759805693%14b1c65594b1c645"
     }
     ```
+
+# Debugging received messages on Android
+
+Take a look at this [gist](https://gist.github.com/mrblrrd/13ef2ad4db858871b2e4cec070246133). Hope it helps.
 
 ## License
 
