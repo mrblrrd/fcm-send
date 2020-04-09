@@ -58,7 +58,6 @@ private class FcmSend : CliktCommand(
         }
     }
 
-    @UseExperimental(ExperimentalStdlibApi::class)
     private fun sendMessage(message: String) {
 
         val connection: HttpURLConnection =
