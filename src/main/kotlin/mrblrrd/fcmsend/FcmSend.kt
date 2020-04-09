@@ -68,7 +68,7 @@ private class FcmSend : CliktCommand(
             ).apply { doOutput = true }
 
         DataOutputStream(connection.outputStream).use { outputStream ->
-            outputStream.write(message.encodeToByteArray())
+            outputStream.write(message.toByteArray(Charsets.UTF_8))
             outputStream.flush()
         }
 
