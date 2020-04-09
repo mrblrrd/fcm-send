@@ -58,6 +58,7 @@ private class FcmSend : CliktCommand(
         }
     }
 
+    @UseExperimental(ExperimentalStdlibApi::class)
     private fun sendMessage(message: String) {
 
         val connection: HttpURLConnection =
@@ -67,7 +68,7 @@ private class FcmSend : CliktCommand(
             ).apply { doOutput = true }
 
         DataOutputStream(connection.outputStream).use { outputStream ->
-            outputStream.writeBytes(message)
+            outputStream.write(message.encodeToByteArray())
             outputStream.flush()
         }
 
@@ -87,7 +88,7 @@ private class FcmSend : CliktCommand(
         (URL(apiUrl).openConnection() as HttpURLConnection)
             .apply {
                 setRequestProperty("Authorization", "Bearer $token")
-                setRequestProperty("Content-Type", "application/json; UTF-8")
+                setRequestProperty("Content-Type", "application/json; charset=utf-8")
             }
 
     private fun getAccessToken(appCredentialsFile: File): AccessToken =
